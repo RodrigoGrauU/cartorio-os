@@ -17,5 +17,7 @@ Com isso, foi realizado o relacionamento dessas classes utilizando as anotaçõe
 Utilizou-se o Spring Initializr (https://start.spring.io/) para iniciar o projeto, adicionando as dependências para trabalhar com projetos web, thymeleaf e conexão com banco de dados Postgres.
 Para melhorar um pouco a parte dos formulários, foi utilizado javascript.
 
+Os scripts para criação das tabelas no banco de dados estão localizados na pasta **resource**.
+
 Pendência:  
 Falta implementar a API REST da aplicação. Está disponível apenas o endpoint para consumir as informações das certidões disponíveis  

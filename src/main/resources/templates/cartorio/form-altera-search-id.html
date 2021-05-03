@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Altera Cartório</title>
+		<style>
+			.alert.alert-success {
+			    color: green;
+			    font-size: 22px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div th:if="${msg}" th:text="${msg}" th:class="${'alert ' + alertClass}"/>
+		<h1>Altera Cartório</h1>
+		<h5>Infome o código do cartório para alterar</h5>
+		<form th:action="@{/cartorio/altera}" method="get">
+			<input type="number"  name="id"> <br/>
+			<button>Alterar Cartório</button>
+		</form>
+	</body>
+	<a th:href="@{/cartorio}">Ver todos os cartórios</a> <br/>
+	<a th:href="@{/}">Voltar ao Início</a> <br/>
+</html>

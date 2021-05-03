@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Altera Cartório</title>
+</head>
+<body>
+	<h1>Altera Cartório</h1>
+	
+	<form th:action="@{/cartorio/altera}" th:object="${cartorio}" method="post">
+		<input type="hidden" th:field="*{id}">
+		<input type="text" name="nome" th:placeholder="Nome" th:field="*{nome}"> <br/>
+		<input type="text" name="nome" th:placeholder="Nome" th:field="*{endereco}"> <br/>
+		
+		<!-- certidao -->
+		<div id="certidoes">
+			<div th:each="certidao,i : ${cartorio.certidoes}">
+				<input type="hidden" th:field="*{certidoes[__${i.index}__].id}"> 
+				<input type="text" name="certidao" class="certidao" placeholder="Nome da Certidão" th:field="*{certidoes[__${i.index}__].nome}" ><br/>
+			</div>
+		</div>
+		<input type="button" value="Mais certidao" id="btnAddCertidao">
+		<input type="button" value="Menos certidao" id="btnRemoveCertidao"> </br>
+		
+		<button type="submit">Altera Cartório</button>
+	
+	</form> <br/>
+	
+	<a th:href="@{/}">Voltar ao Início</a>
+	
+	<script script type="text/javascript" language="javascript">
+	var certidoes = document.getElementById("certidoes");
+	
+	var addCertidao = document.getElementById("btnAddCertidao");
+	var removeCertidao = document.getElementById("btnRemoveCertidao");
+	
+	addCertidao.addEventListener('click', adicionaCertidao);
+	removeCertidao.addEventListener('click', removeCampoCertidao);
+	function adicionaCertidao() {
+		var div = document.createElement("div");
+		var input = document.createElement("input");
+		input.className = "certidao";
+		input.type = "text";
+		input.name = "certidao";
+		input.placeholder = "Nome da certidão";
+		div.appendChild(input);
+		div.appendChild(document.createElement("br"));
+		certidoes.appendChild(div);
+	}
+	
+	
+	function removeCampoCertidao() {
+		//sempre remove o último campo das certidões
+		certidoes.getElementsByTagName("br")[certidoes.getElementsByTagName("br").length - 1].remove();
+		certidoes.getElementsByClassName("certidao")[certidoes.getElementsByClassName("certidao").length -1].remove();
+	}
+	
+	</script>
+</body>
+</html>

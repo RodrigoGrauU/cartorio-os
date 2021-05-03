@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cartórios</title>
+</head>
+<body>
+<h1>Cartórios</h1>
+	<table>
+        <tr>
+        	<td>Código</td>
+            <td>Nome</td>
+            <td>Endereço</td>
+            <td>Certidão que emite</td>
+        </tr>
+        
+        <tr th:each="cartorio : ${cartorios}">
+        	<td th:text="${cartorio.id}" name="nome"></td>
+            <td th:text="${cartorio.nome}" name="nome"></td>
+			<td th:text="${cartorio.endereco}" name="endereco"></td>
+			<td>
+				<p  th:each="certidao : ${cartorio.certidoes}" th:text="${certidao.nome}"></p>
+			</td>
+			<!-- lita as certidoes emitidas pelo cartorio -->
+        </tr>
+    </table> <br/>
+    
+   	<a th:href="@{/}">Voltar ao Início</a> </br>
+   	<a th:href="@{/cartorio/altera-cartorio-search}">Alterar Cartório</a> <br/>
+   	<a th:href="@{/cartorio/delete}">Remover Cartório</a> <br/>
+</body>
+</html>

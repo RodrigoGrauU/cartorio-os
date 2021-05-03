@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta charset="UTF-8">
+	<title>Novo Cartório</title>
+	<style>
+	.alert.alert-danger {
+	    color: green;
+	    font-size: 22px;
+	}
+	</style>
+	</head>
+	<body>
+	<div th:if="${msg}" th:text="${msg}" th:class="${'alert ' + alertClass}"/>
+	<h1>Novo Cartório</h1>
+	
+	<h2>Informe os dados a seguir para adicionar o novo cartório</h2>
+	<form th:action="@{/cartorio}" th:object="${cartorio}" method="post">
+		<input type="text" name="nome" th:placeholder="Nome">
+		<input type="text" name="endereco" th:placeholder="Endereço">
+		
+		<!-- adicao de certidao -->
+		<div id="certidoes">
+			<input type="text" name="certidao" class="certidao" placeholder="Nome da Certidão"><br/>
+		</div>
+		
+		<input type="button" value="Mais certidao" id="btnAddCertidao">
+		<input type="button" value="Menos certidao" id="btnRemoveCertidao">
+		<button>Adicionar Cartório</button>
+	
+	</form> <br/>
+	
+	<a th:href="@{/}">Voltar ao Início</a>
+	
+	<script script type="text/javascript" language="javascript">
+	var certidoes = document.getElementById("certidoes");
+	
+	var addCertidao = document.getElementById("btnAddCertidao");
+	var removeCertidao = document.getElementById("btnRemoveCertidao");
+	addCertidao.addEventListener('click', adicionaCertidao);
+	removeCampoCertidao
+	removeCertidao.addEventListener('click', removeCampoCertidao);
+	function adicionaCertidao() {
+		var campo = document.createElement("input");
+		campo.className = "certidao";
+		campo.type = "text";
+		campo.name = "certidao";
+		campo.placeholder = "Nome da certidão";
+		certidoes.appendChild(campo);
+		certidoes.appendChild(document.createElement("br"));
+	}
+	
+	function removeCampoCertidao() {
+		//falta testar
+		certidoes.getElementsByTagName("br")[certidoes.getElementsByTagName("br").length - 1].remove();
+		certidoes.getElementsByClassName("certidao")[certidoes.getElementsByClassName("certidao").length -1].remove();
+	}
+	
+	</script>
+	</body>
+</html>

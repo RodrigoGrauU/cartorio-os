@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Deleta Cartório</title>
+		<style>
+			.alert.alert-success {
+			    color: green;
+			    font-size: 22px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div th:if="${msg}" th:text="${msg}" th:class="${'alert ' + alertClass}"/>
+		<h1>Remover Cartório</h1>
+		<h5>Infome o código do cartório para deletar</h5>
+		<form th:action="@{/cartorio/delete}" th:object="${cartorio}" method="post">
+			<input type="number"  th:name="id" th:field="${cartorio.id}"> <br/>
+			<button>Deletar Cartório</button>
+		</form>
+	</body>
+	<a th:href="@{/cartorio}">Ver todos os cartórios</a> <br/>
+	<a th:href="@{/}">Voltar ao Início</a> <br/>
+</html>
